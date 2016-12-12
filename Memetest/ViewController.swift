@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate,
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate,
 UINavigationControllerDelegate {
     
     
@@ -24,34 +24,36 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var toolBar: UIToolbar!
     
-    var flagOfKeyboard = false
     
     func imagePickerController(picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             memeImage.image = image
-            self.dismissViewControllerAnimated(true, completion: nil)
+            memeImage.contentMode = .ScaleAspectFit
+            dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     @IBAction func pickAnImageFromAlbumWithSender(sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        pickAnImageFromSource(UIImagePickerControllerSourceType.PhotoLibrary)
     }
     
     
     @IBAction func pickAnImageFromCameraWithSender(sender: AnyObject) {
+        pickAnImageFromSource(UIImagePickerControllerSourceType.Camera)
+    }
+    
+    func pickAnImageFromSource(source: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = source
     }
     
     @IBAction func shareMemeWithSender(sender: AnyObject) {
         let memedImage = generateMemedImage()
+        save()
         let vc = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
-        self.presentViewController(vc, animated: true, completion: nil)
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -63,36 +65,35 @@ UINavigationControllerDelegate {
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -0.8
+        NSStrokeWidthAttributeName : -3.5
     ] as [String : AnyObject]
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // Subscribe to keyboard notifications to allow the view to raise when necessary
-        
-        self.textTop.delegate = self
-        self.textBottom.delegate = self
-        self.textTop.defaultTextAttributes = memeTextAttributes
-        self.textBottom.defaultTextAttributes = memeTextAttributes
-        self.textTop.borderStyle = UITextBorderStyle.None
-        self.textBottom.borderStyle = UITextBorderStyle.None
-        self.subscribeToKeyboardNotifications()
+        configureTextFields(textTop, defaultString: "TOP")
+        configureTextFields(textBottom, defaultString: "BOTTOM")
+        subscribeToKeyboardNotifications()
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        textTop.textAlignment = .Center
-        textBottom.textAlignment = .Center
-        textTop.defaultTextAttributes = memeTextAttributes
-        textBottom.defaultTextAttributes = memeTextAttributes
-        
+        configureTextFields(textTop, defaultString: "TOP")
+        configureTextFields(textBottom, defaultString: "BOTTOM")
+    }
+    func configureTextFields(textField: UITextField, defaultString: String) {
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.borderStyle = .None
+        textField.textAlignment = .Center
+        textField.text = defaultString
     }
     
     func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -101,18 +102,15 @@ UINavigationControllerDelegate {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        if !flagOfKeyboard {
-            print(getKeyboardHeight(notification))
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
-            print(getKeyboardHeight(notification))
-            flagOfKeyboard = true
+        if textBottom.isFirstResponder() {
+            view.frame.origin.y = getKeyboardHeight(notification) * (-1)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        print(getKeyboardHeight(notification))
-        self.view.frame.origin.y += getKeyboardHeight(notification)
-        print(getKeyboardHeight(notification))
+        if textBottom.isFirstResponder() {
+            view.frame.origin.y = 0
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
@@ -124,26 +122,26 @@ UINavigationControllerDelegate {
     // Unsubscribe
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     
     // Create a UIImage that combines the Image View and the Textfields
     func generateMemedImage() -> UIImage {
-        self.hideNavBarAndToolBar(true)
+        hideNavBarAndToolBar(true)
         
         // render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        self.hideNavBarAndToolBar(false)
+        hideNavBarAndToolBar(false)
         return memedImage
     }
     
     func hideNavBarAndToolBar(hide: Bool) {
-        self.navBar.hidden = hide
-        self.toolBar.hidden = hide
+        navBar.hidden = hide
+        toolBar.hidden = hide
     }
     
     func save() {
