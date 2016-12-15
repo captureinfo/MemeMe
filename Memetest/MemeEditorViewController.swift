@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  Memetest
 //
 //  Created by Yang Gao on 11/7/16.
@@ -11,19 +11,16 @@ import UIKit
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate,
 UINavigationControllerDelegate {
     
-    
     @IBOutlet weak var textTop: UITextField!
     @IBOutlet weak var textBottom: UITextField!
     
     @IBOutlet weak var memeImage: UIImageView!
-
 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
  
     @IBOutlet weak var navBar: UINavigationBar!
     
     @IBOutlet weak var toolBar: UIToolbar!
-    
     
     func imagePickerController(picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -36,7 +33,6 @@ UINavigationControllerDelegate {
     @IBAction func pickAnImageFromAlbumWithSender(sender: AnyObject) {
         pickAnImageFromSource(UIImagePickerControllerSourceType.PhotoLibrary)
     }
-    
     
     @IBAction func pickAnImageFromCameraWithSender(sender: AnyObject) {
         pickAnImageFromSource(UIImagePickerControllerSourceType.Camera)
@@ -83,6 +79,7 @@ UINavigationControllerDelegate {
         configureTextFields(textTop, defaultString: "TOP")
         configureTextFields(textBottom, defaultString: "BOTTOM")
     }
+    
     func configureTextFields(textField: UITextField, defaultString: String) {
         textField.delegate = self
         textField.defaultTextAttributes = memeTextAttributes
