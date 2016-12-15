@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f08-jk-0SH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f08-jk-0SH">
                                 <frame key="frameInset" minX="12" minY="64" width="643" height="267"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7dP-Xe-YDx">
@@ -66,13 +67,21 @@
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="leading" secondItem="hkq-jh-VE8" secondAttribute="leading" id="23d-bR-zJ6"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="bottom" secondItem="f08-jk-0SH" secondAttribute="top" id="2Ic-hw-Zla"/>
                             <constraint firstItem="Lb0-oD-CGb" firstAttribute="top" secondItem="f08-jk-0SH" secondAttribute="bottom" constant="-50" id="7Ou-fJ-frE"/>
+                            <constraint firstItem="Lb0-oD-CGb" firstAttribute="top" secondItem="f08-jk-0SH" secondAttribute="bottom" id="8ua-v4-3Fk"/>
+                            <constraint firstItem="Lb0-oD-CGb" firstAttribute="leading" secondItem="cLH-de-MJZ" secondAttribute="leadingMargin" id="AOA-5I-ZzA"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="trailing" secondItem="hkq-jh-VE8" secondAttribute="trailing" id="FBk-pO-7nf"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="centerX" secondItem="Lb0-oD-CGb" secondAttribute="centerX" id="H6V-Vw-Ezu"/>
+                            <constraint firstItem="7dP-Xe-YDx" firstAttribute="leading" secondItem="cLH-de-MJZ" secondAttribute="leadingMargin" id="IJf-J5-YjD"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="centerX" secondItem="7dP-Xe-YDx" secondAttribute="centerX" id="JG0-0r-RaT"/>
+                            <constraint firstItem="7dP-Xe-YDx" firstAttribute="top" secondItem="pqe-Er-4LU" secondAttribute="bottom" constant="40" id="PSr-2U-hoW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7dP-Xe-YDx" secondAttribute="trailing" id="Pnz-XY-Mxf"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="leading" secondItem="cLH-de-MJZ" secondAttribute="leading" id="QF4-VJ-FE4"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="bottom" secondItem="UsL-mf-CX7" secondAttribute="top" id="QgL-ct-e31"/>
+                            <constraint firstAttribute="trailing" secondItem="f08-jk-0SH" secondAttribute="trailing" id="S5H-08-FoT"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="centerX" secondItem="f08-jk-0SH" secondAttribute="centerX" id="VBM-PV-joA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lb0-oD-CGb" secondAttribute="trailing" id="Y50-tJ-8ql"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="top" secondItem="f08-jk-0SH" secondAttribute="bottom" id="cGw-ic-la3"/>
+                            <constraint firstItem="f08-jk-0SH" firstAttribute="leading" secondItem="cLH-de-MJZ" secondAttribute="leading" id="gco-ZQ-o32"/>
                             <constraint firstItem="f08-jk-0SH" firstAttribute="centerX" secondItem="cLH-de-MJZ" secondAttribute="centerX" id="qGD-JT-dw4"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="top" secondItem="Xe5-bG-15A" secondAttribute="bottom" id="rKO-zD-MPT"/>
                             <constraint firstItem="f08-jk-0SH" firstAttribute="top" secondItem="7dP-Xe-YDx" secondAttribute="top" constant="-50" id="zmF-mT-yye"/>
