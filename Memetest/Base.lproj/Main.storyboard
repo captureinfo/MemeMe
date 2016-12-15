@@ -65,7 +65,7 @@
                         <constraints>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="leading" secondItem="hkq-jh-VE8" secondAttribute="leading" id="23d-bR-zJ6"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="bottom" secondItem="f08-jk-0SH" secondAttribute="top" id="2Ic-hw-Zla"/>
-                            <constraint firstItem="Lb0-oD-CGb" firstAttribute="top" secondItem="f08-jk-0SH" secondAttribute="bottom" constant="-100" id="7Ou-fJ-frE"/>
+                            <constraint firstItem="Lb0-oD-CGb" firstAttribute="top" secondItem="f08-jk-0SH" secondAttribute="bottom" constant="-50" id="7Ou-fJ-frE"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="trailing" secondItem="hkq-jh-VE8" secondAttribute="trailing" id="FBk-pO-7nf"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="centerX" secondItem="Lb0-oD-CGb" secondAttribute="centerX" id="H6V-Vw-Ezu"/>
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="centerX" secondItem="7dP-Xe-YDx" secondAttribute="centerX" id="JG0-0r-RaT"/>
@@ -75,7 +75,7 @@
                             <constraint firstItem="hkq-jh-VE8" firstAttribute="top" secondItem="f08-jk-0SH" secondAttribute="bottom" id="cGw-ic-la3"/>
                             <constraint firstItem="f08-jk-0SH" firstAttribute="centerX" secondItem="cLH-de-MJZ" secondAttribute="centerX" id="qGD-JT-dw4"/>
                             <constraint firstItem="pqe-Er-4LU" firstAttribute="top" secondItem="Xe5-bG-15A" secondAttribute="bottom" id="rKO-zD-MPT"/>
-                            <constraint firstItem="f08-jk-0SH" firstAttribute="top" secondItem="7dP-Xe-YDx" secondAttribute="top" constant="-100" id="zmF-mT-yye"/>
+                            <constraint firstItem="f08-jk-0SH" firstAttribute="top" secondItem="7dP-Xe-YDx" secondAttribute="top" constant="-50" id="zmF-mT-yye"/>
                         </constraints>
                     </view>
                     <connections>
