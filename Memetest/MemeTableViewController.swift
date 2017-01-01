@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
-    // @IBOutlet weak var flowLayout:UIColletionViewFlowLayout!
+class MemeTableViewController: UITableViewController {
     
     var memes: [Meme]!
     
@@ -28,15 +26,15 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         NSOperationQueue.mainQueue().addOperationWithBlock((tableView?.reloadData)!)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableViewCell", forIndexPath: indexPath) as! MemeTableViewCell
         let meme = memes[indexPath.item]
         //        cell.setText(meme.top, bottomString: meme.bottom)
