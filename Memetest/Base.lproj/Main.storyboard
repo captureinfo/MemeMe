@@ -29,7 +29,7 @@
         <scene sceneID="mqM-dC-atG">
             <objects>
                 <navigationController id="e9Y-VX-EDK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="UXk-m6-yLG"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="collection" selectedImage="collection" id="UXk-m6-yLG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SRm-7F-6MY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -87,6 +87,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="GMZ-No-XU6" id="8Be-wY-Tck"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IG2-TD-oeo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,7 +99,7 @@
         <scene sceneID="9Xq-cg-zBd">
             <objects>
                 <navigationController storyboardIdentifier="Table" id="RcW-c6-t8X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="JA4-nz-PgU"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="table" selectedImage="table" id="JA4-nz-PgU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="W4j-EE-CUW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -248,8 +251,39 @@
             </objects>
             <point key="canvasLocation" x="1846" y="-1348"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="CqA-ZS-58k">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="YoW-5z-ODu" customClass="MemeDetailViewController" customModule="Memetest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gvq-cF-b0Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="DDn-L6-LxJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VVi-56-LBD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vg0-zd-hmY">
+                                <frame key="frameInset" minX="67" minY="174" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Vg0-zd-hmY" id="4GK-TJ-W1V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yyX-zY-pWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2535" y="-1522"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tfa-TN-9LW"/>
+        <segue reference="C9f-MX-stq"/>
     </inferredMetricsTieBreakers>
 </document>

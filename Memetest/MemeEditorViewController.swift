@@ -53,7 +53,12 @@ UINavigationControllerDelegate {
     @IBAction func shareMemeWithSender(sender: AnyObject) {
         let memedImage = generateMemedImage()
         let vc = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
-        presentViewController(vc, animated: true, completion: save)
+        presentViewController(vc, animated: true, completion: nil)
+        vc.completionWithItemsHandler = {(activity, completed, items, error) in
+            if (completed) {
+                self.save()
+            }
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
