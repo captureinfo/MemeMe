@@ -22,6 +22,12 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         memes = appDelegate.memes
     }
     
+    override func viewWillAppear(animated: Bool) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        memes = appDelegate.memes
+        NSOperationQueue.mainQueue().addOperationWithBlock((tableView?.reloadData)!)
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

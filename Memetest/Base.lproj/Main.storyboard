@@ -80,7 +80,13 @@
                             <outlet property="delegate" destination="ei6-NI-MTQ" id="CE4-Tn-u5H"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="kmK-Bs-vBV"/>
+                    <navigationItem key="navigationItem" id="kmK-Bs-vBV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qgf-pn-SXp">
+                            <connections>
+                                <segue destination="TNU-Pz-Ier" kind="presentation" id="C9f-MX-stq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IG2-TD-oeo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,14 +156,20 @@
                             <constraint firstItem="c93-qg-kXm" firstAttribute="trailing" secondItem="IZk-8x-ln2" secondAttribute="trailingMargin" id="txB-bz-AHG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OYz-h2-Pvn"/>
+                    <navigationItem key="navigationItem" id="OYz-h2-Pvn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GW9-Ri-b6o">
+                            <connections>
+                                <segue destination="TNU-Pz-Ier" kind="presentation" id="6Di-j9-yx7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="c93-qg-kXm" id="IdH-4J-KwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPg-G5-4C6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="-1246.3268365817091"/>
+            <point key="canvasLocation" x="810" y="-1153"/>
         </scene>
         <!--Meme Editor View Controller-->
         <scene sceneID="bGj-k4-B1B">
@@ -203,7 +215,11 @@
                                                 <action selector="shareMemeWithSender:" destination="TNU-Pz-Ier" id="slA-bn-HL6"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="I3E-ha-lrm"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="I3E-ha-lrm">
+                                            <connections>
+                                                <action selector="cancelWithSender:" destination="TNU-Pz-Ier" id="OAc-Z6-0GU"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -248,7 +264,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6HB-QL-4fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1673" y="-1234"/>
+            <point key="canvasLocation" x="1846" y="-1348"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6Di-j9-yx7"/>
+    </inferredMetricsTieBreakers>
 </document>

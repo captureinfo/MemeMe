@@ -22,6 +22,11 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var toolBar: UIToolbar!
     
+    @IBAction func cancelWithSender(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     func imagePickerController(picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             memeImage.image = image
