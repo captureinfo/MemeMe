@@ -27,12 +27,14 @@ class MemeCollectionViewController: UICollectionViewController {
         NSOperationQueue.mainQueue().addOperationWithBlock((collectionView?.reloadData)!)
     }
     
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return memes.count
+    }
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.item]
-//        cell.setText(meme.top, bottomString: meme.bottom)
-        let imageView = UIImageView(image: meme.memedImage)
-        cell.memeImageView? = imageView
+        cell.memeImageView.image = meme.memedImage
         
         return cell
     }

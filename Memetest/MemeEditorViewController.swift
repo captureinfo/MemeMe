@@ -52,14 +52,13 @@ UINavigationControllerDelegate {
     
     @IBAction func shareMemeWithSender(sender: AnyObject) {
         let memedImage = generateMemedImage()
-        save()
         let vc = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
-        presentViewController(vc, animated: true, completion: nil)
+        presentViewController(vc, animated: true, completion: save)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true;
+        return true
     }
     
     let memeTextAttributes = [
@@ -81,8 +80,6 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        configureTextFields(textTop, defaultString: "TOP")
-        configureTextFields(textBottom, defaultString: "BOTTOM")
     }
     
     func configureTextFields(textField: UITextField, defaultString: String) {
