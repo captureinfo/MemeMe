@@ -259,16 +259,19 @@
                         <viewControllerLayoutGuide type="top" id="Gvq-cF-b0Y"/>
                         <viewControllerLayoutGuide type="bottom" id="DDn-L6-LxJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VVi-56-LBD">
+                    <view key="view" contentMode="scaleAspectFit" id="VVi-56-LBD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vg0-zd-hmY">
-                                <frame key="frameInset" minX="67" minY="174" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vg0-zd-hmY"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Vg0-zd-hmY" secondAttribute="trailing" id="Nu3-xE-92j"/>
+                            <constraint firstItem="Vg0-zd-hmY" firstAttribute="bottom" secondItem="DDn-L6-LxJ" secondAttribute="top" id="aVY-na-FI0"/>
+                            <constraint firstItem="Vg0-zd-hmY" firstAttribute="leading" secondItem="VVi-56-LBD" secondAttribute="leading" id="gie-2Q-mb5"/>
+                            <constraint firstItem="Vg0-zd-hmY" firstAttribute="top" secondItem="Gvq-cF-b0Y" secondAttribute="bottom" id="mJd-Ab-XeQ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Vg0-zd-hmY" id="4GK-TJ-W1V"/>
@@ -276,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyX-zY-pWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2535" y="-1522"/>
+            <point key="canvasLocation" x="2533.5999999999999" y="-1522.488755622189"/>
         </scene>
     </scenes>
     <resources>

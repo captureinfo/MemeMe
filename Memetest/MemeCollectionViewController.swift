@@ -22,12 +22,10 @@ class MemeCollectionViewController: UICollectionViewController {
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        memes = appDelegate.memes
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         memes = appDelegate.memes
         NSOperationQueue.mainQueue().addOperationWithBlock((collectionView?.reloadData)!)

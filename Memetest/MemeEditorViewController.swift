@@ -57,6 +57,7 @@ UINavigationControllerDelegate {
         vc.completionWithItemsHandler = {(activity, completed, items, error) in
             if (completed) {
                 self.save()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }

@@ -15,12 +15,10 @@ class MemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        memes = appDelegate.memes
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         memes = appDelegate.memes
         NSOperationQueue.mainQueue().addOperationWithBlock((tableView?.reloadData)!)
